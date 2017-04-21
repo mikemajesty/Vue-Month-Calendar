@@ -7,7 +7,6 @@
         <md-input></md-input>
 			</md-input-container>
 
-		
 		</md-layout>
 	</md-layout>
 </template>
@@ -21,7 +20,7 @@
     name: 'MonthCalendar',
     data () {
       return {
-        msg: 'Welcome to Your Vue.js App'
+        msg: 'Month Calendar'
       }
     }
   }
