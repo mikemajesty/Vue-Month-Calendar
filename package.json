@@ -16,7 +16,8 @@
   "dependencies": {
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
-    "vue-material": "^0.7.1"
+    "vue-material": "^0.7.1",
+    "serve-favicon": "2.3.2"
   },
   "devDependencies": {
     "autoprefixer": "^6.7.2",
