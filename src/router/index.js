@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MonthCalendar from 'component/MonthCalendar' // for heroku
-//import MonthCalendar from '@/components/MonthCalendar' // for dev
+import MonthCalendar from '@/components/MonthCalendar'
 Vue.use(Router)
 
 export default new Router({
