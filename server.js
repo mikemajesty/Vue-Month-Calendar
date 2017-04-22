@@ -1,10 +1,7 @@
 var express = require("express");
-var favicon = require('serve-favicon');
 var app = express();
 
 app.use('/', express.static(__dirname + '/'));
-
-app.use(favicon(__dirname + '/static/month.ico'));
 
 var PORT = process.env.PORT || 5000;
 
