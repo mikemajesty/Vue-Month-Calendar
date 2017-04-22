@@ -71,6 +71,13 @@
   }
 
   export default {
+    name: 'vue-month-calendar',
+    props: {
+      options: {
+        type: Object,
+        required: true
+      }
+    },
     data () {
       return {
         year: currentDate.toLocaleString(navigator.language, { year: 'numeric' }),

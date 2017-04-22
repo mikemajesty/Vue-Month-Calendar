@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MonthCalendar from '@/components/MonthCalendar'
+import VueMonthCalendar from '@/components/MonthCalendar'
 Vue.use(Router)
 
 export default new Router({
@@ -8,7 +8,7 @@ export default new Router({
     {
       path: '/',
       name: 'VueMonthCalendar',
-      component: MonthCalendar
+      component: VueMonthCalendar
     }
   ]
 })
