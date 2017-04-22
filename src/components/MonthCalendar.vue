@@ -2,7 +2,7 @@
   <md-layout md-gutter>
     <md-layout md-flex-small="100" md-flex-medium="100" md-hide-xsmall>
       <md-layout md-flex="10">
-        <md-button class="md-raised">
+        <md-button class="md-raised" v-on:click.native="lessMonth">
           <md-icon>keyboard_arrow_left</md-icon>
         </md-button>
       </md-layout>
@@ -10,12 +10,12 @@
         <md-input-container>
           <label for="month">Month</label>
           <md-select name="month" v-model="month">
-            <md-option v-for="month in filteringMonth" :value="month" :key="month">{{ month }}</md-option>
+            <md-option v-for="month in filteringMonth" :value="month.name" :key="month.name">{{ month.name }}</md-option>
           </md-select>
         </md-input-container>
       </md-layout>
       <md-layout md-flex="10">
-        <md-button class="md-raised">
+        <md-button class="md-raised" v-on:click.native="plusMonth">
           <md-icon>keyboard_arrow_right</md-icon>
         </md-button>
       </md-layout>
@@ -52,7 +52,9 @@
   import VueMaterial from 'vue-material'
 
   Vue.use(VueMaterial)
-  
+
+  let currentDate = new Date()
+
   const getMonths = () => {
     var months = []
     var currentDate = new Date()
@@ -62,7 +64,7 @@
     }
 
     for (var cont = 0; cont < 12; cont++) {
-      months[cont] = capitalize(new Date(currentDate.getFullYear(), cont, 1).toLocaleString(navigator.language, { month: 'long' }))
+      months[cont] = {name: capitalize(new Date(currentDate.getFullYear(), cont, 1).toLocaleString(navigator.language, { month: 'long' })), date: new Date(currentDate.getFullYear(), cont, 1)}
     }
     return months
   }
@@ -71,18 +73,28 @@
     name: 'MonthCalendar',
     data () {
       return {
-        msg: 'Month Calendar',
-        year: new Date().toLocaleString(navigator.language, { year: 'numeric' }),
-        month: new Date().toLocaleString(navigator.language, { month: 'long' })
+        year: currentDate.toLocaleString(navigator.language, { year: 'numeric' }),
+        month: currentDate.toLocaleString(navigator.language, { month: 'long' })
       }
     },
     methods: {
-      teste: () => {
-        return 'mike'
+      lessMonth: function () {
+        let month = getMonths().filter((item) => {
+          return item.name === this.month
+        })
+        month[0].date.setMonth(month[0].date.getMonth() - 1)
+        this.month = month[0].date.toLocaleString(navigator.language, { month: 'long' })
+      },
+      plusMonth: function () {
+        let month = getMonths().filter((item) => {
+          return item.name === this.month
+        })
+        month[0].date.setMonth(month[0].date.getMonth() + 1)
+        this.month = month[0].date.toLocaleString(navigator.language, { month: 'long' })
       }
     },
     computed: {
-      filteringMonth: () => {
+      filteringMonth: function () {
         return getMonths()
       }
     }
