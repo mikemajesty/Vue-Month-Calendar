@@ -56,21 +56,22 @@
   let currentDate = new Date()
 
   const getMonths = () => {
-    var months = []
-    var currentDate = new Date()
+    let months = []
+    let currentDate = new Date()
 
     const capitalize = (list) => {
       return list.charAt(0).toUpperCase() + list.slice(1)
     }
 
     for (var cont = 0; cont < 12; cont++) {
-      months[cont] = {name: capitalize(new Date(currentDate.getFullYear(), cont, 1).toLocaleString(navigator.language, { month: 'long' })), date: new Date(currentDate.getFullYear(), cont, 1)}
+      const date = new Date(currentDate.getFullYear(), cont, 1)
+      months[cont] = {name: capitalize(date.toLocaleString(navigator.language, { month: 'long' })), date: date}
     }
     return months
   }
 
   export default {
-    name: 'MonthCalendar',
+    name: 'vue-month-calendar',
     data () {
       return {
         year: currentDate.toLocaleString(navigator.language, { year: 'numeric' }),
@@ -94,7 +95,7 @@
       }
     },
     computed: {
-      filteringMonth: function () {
+      filteringMonth: () => {
         return getMonths()
       }
     }
