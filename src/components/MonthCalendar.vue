@@ -10,18 +10,7 @@
         <md-input-container>
           <label for="month">Month</label>
           <md-select name="month" v-model="month">
-            <md-option value="January">January</md-option>
-            <md-option value="February">February</md-option>
-            <md-option value="March">March</md-option>
-            <md-option value="April">April</md-option>
-            <md-option value="May">May</md-option>
-            <md-option value="June">June</md-option>
-            <md-option value="July">July</md-option>
-            <md-option value="August">August</md-option>
-            <md-option value="September">September</md-option>
-            <md-option value="October">October</md-option>
-            <md-option value="November">November</md-option>
-            <md-option value="December">December</md-option>
+            <md-option v-for="month in filteringMonth" :value="month" :key="month">{{ month }}</md-option>
           </md-select>
         </md-input-container>
       </md-layout>
@@ -63,6 +52,23 @@
   import VueMaterial from 'vue-material'
 
   Vue.use(VueMaterial)
+  
+  const getMonths = () => {
+    var months = []
+    var currentDate = new Date()
+
+    const capitalize = (list) => {
+      return list.charAt(0).toUpperCase() + list.slice(1)
+    }
+
+    for (var cont = 0; cont < 12; cont++) {
+      months[cont] = capitalize(new Date(currentDate.getFullYear(), cont, 1).toLocaleString(navigator.language, { month: 'long' }))
+    }
+    console.log('passou')
+    return months
+  }
+
+  console.log(getMonths())
 
   export default {
     name: 'MonthCalendar',
@@ -72,10 +78,20 @@
         year: [],
         month: []
       }
+    },
+    methods: {
+      teste: () => {
+        return 'mike'
+      }
+    },
+    computed: {
+      filteringMonth: () => {
+        return getMonths()
+      }
     }
   }
 </script>
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
   h1,
   h2 {
