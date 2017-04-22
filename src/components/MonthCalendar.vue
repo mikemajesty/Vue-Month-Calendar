@@ -1,39 +1,39 @@
 <template lang="html">
-  <md-layout md-gutter>
+  <md-layout md-gutter class="vue-month-calendar">
     <md-layout md-flex-small="100" md-flex-medium="100" md-hide-xsmall>
       <md-layout md-flex="10">
-        <md-button class="md-raised" v-on:click.native="lessMonth">
+        <md-button class="md-raised custom-height" v-on:click.native="lessMonth">
           <md-icon>keyboard_arrow_left</md-icon>
         </md-button>
       </md-layout>
       <md-layout md-flex="30">
         <md-input-container>
           <label for="month">Month</label>
-          <md-select name="month" v-model="month">
+          <md-select name="month" v-model="month" class="center-align">
             <md-option v-for="month in loadMonth" :value="month.name" :key="month.name">{{ month.name }}</md-option>
           </md-select>
         </md-input-container>
       </md-layout>
       <md-layout md-flex="10">
-        <md-button class="md-raised" v-on:click.native="plusMonth">
+        <md-button class="md-raised custom-height" v-on:click.native="plusMonth">
           <md-icon>keyboard_arrow_right</md-icon>
         </md-button>
       </md-layout>
       <md-layout md-flex="10">
-        <md-button class="md-raised" v-on:click.native="lessYear">
+        <md-button class="md-raised custom-height" v-on:click.native="lessYear">
           <md-icon>keyboard_arrow_left</md-icon>
         </md-button>
       </md-layout>
       <md-layout md-flex="30">
         <md-input-container>
           <label for="year">Year</label>
-          <md-select name="year" v-model="year">
+          <md-select name="year" v-model="year" class="center-align">
             <md-option v-for="year in loadYear" :value="year" :key="year">{{ year }}</md-option>
           </md-select>
         </md-input-container>
       </md-layout>
       <md-layout md-flex="10">
-        <md-button class="md-raised" v-on:click.native="plusYear">
+        <md-button class="md-raised custom-height" v-on:click.native="plusYear">
           <md-icon>keyboard_arrow_right</md-icon>
         </md-button>
       </md-layout>
@@ -136,4 +136,11 @@
     color: #42b983;
   }
 
+  .vue-month-calendar .center-align {
+    text-align: center;
+  }
+
+  .vue-month-calendar .custom-height {
+    height: 45px;
+  }
 </style>
