@@ -49,17 +49,17 @@
 
   let currentDate = new Date()
 
-  const getMonths = () => {
+  const capitalize = (list) => {
+    return list.charAt(0).toUpperCase() + list.slice(1)
+  }
+
+  const getMonths = (locale) => {
     let months = []
     let currentDate = new Date()
 
-    const capitalize = (list) => {
-      return list.charAt(0).toUpperCase() + list.slice(1)
-    }
-
     for (var cont = 0; cont < 12; cont++) {
       const date = new Date(currentDate.getFullYear(), cont, 1)
-      months[cont] = {name: capitalize(date.toLocaleString(navigator.language, { month: 'long' })), date: date}
+      months[cont] = {name: capitalize(date.toLocaleString(locale, { month: 'long' })), date: date}
     }
     return months
   }
@@ -70,28 +70,33 @@
       options: {
         type: Object,
         required: true
+      },
+      locale: {
+        type: String,
+        required: false,
+        default: navigator.language
       }
     },
     data () {
       return {
         year: currentDate.getFullYear(),
-        month: currentDate.toLocaleString(navigator.language, { month: 'long' })
+        month: capitalize(currentDate.toLocaleString(this.locale, { month: 'long' }))
       }
     },
     methods: {
       lessMonth: function () {
-        let month = getMonths().filter((item) => {
-          return item.name === this.month
+        let month = getMonths(this.locale).filter((item) => {
+          return item.name === capitalize(this.month)
         })
         month[0].date.setMonth(month[0].date.getMonth() - 1)
-        this.month = month[0].date.toLocaleString(navigator.language, { month: 'long' })
+        this.month = capitalize(month[0].date.toLocaleString(this.locale, { month: 'long' }))
       },
       plusMonth: function () {
-        let month = getMonths().filter((item) => {
-          return item.name === this.month
+        let month = getMonths(this.locale).filter((item) => {
+          return item.name === capitalize(this.month)
         })
         month[0].date.setMonth(month[0].date.getMonth() + 1)
-        this.month = month[0].date.toLocaleString(navigator.language, { month: 'long' })
+        this.month = capitalize(month[0].date.toLocaleString(this.locale, { month: 'long' }))
       },
       lessYear: function () {
         this.year = this.year === this.options.minYear ? this.options.maxYear : this.year -= 1
@@ -102,7 +107,7 @@
     },
     computed: {
       loadMonth: function () {
-        return getMonths()
+        return getMonths(this.locale)
       },
       loadYear: function () {
         let years = []

@@ -9,6 +9,7 @@ new Vue({
   data: function () {
     return {
       options: {
+        locale: 'pt-BR',
         minYear: new Date().getFullYear() - 7,
         maxYear: new Date().getFullYear()
       }
