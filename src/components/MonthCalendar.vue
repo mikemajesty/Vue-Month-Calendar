@@ -10,7 +10,7 @@
         <md-input-container>
           <label for="month">Month</label>
           <md-select name="month" v-model="month">
-            <md-option v-for="month in filteringMonth" :value="month.name" :key="month.name">{{ month.name }}</md-option>
+            <md-option v-for="month in loadMonth" :value="month.name" :key="month.name">{{ month.name }}</md-option>
           </md-select>
         </md-input-container>
       </md-layout>
@@ -28,13 +28,7 @@
         <md-input-container>
           <label for="year">Year</label>
           <md-select name="year" v-model="year">
-            <md-option value="2017">2017</md-option>
-            <md-option value="2016">2016</md-option>
-            <md-option value="2015">2015</md-option>
-            <md-option value="2014">2014</md-option>
-            <md-option value="2013">2013</md-option>
-            <md-option value="2012">2012</md-option>
-            <md-option value="2011">2011</md-option>
+            <md-option v-for="year in loadYear" :value="year" :key="year">{{ year }}</md-option>
           </md-select>
         </md-input-container>
       </md-layout>
@@ -80,7 +74,7 @@
     },
     data () {
       return {
-        year: currentDate.toLocaleString(navigator.language, { year: 'numeric' }),
+        year: currentDate.getFullYear(),
         month: currentDate.toLocaleString(navigator.language, { month: 'long' })
       }
     },
@@ -101,8 +95,15 @@
       }
     },
     computed: {
-      filteringMonth: () => {
+      loadMonth: function () {
         return getMonths()
+      },
+      loadYear: function () {
+        let years = []
+        for (var cont = this.options.minYear; cont <= this.options.maxYear; cont++) {
+          years.push(cont)
+        }
+        return years
       }
     }
   }

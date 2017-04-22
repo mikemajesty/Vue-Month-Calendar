@@ -1,21 +1,20 @@
 import Vue from 'vue'
-import App from './App'
-import router from './router'
+import VueMonthCalendar from '@/components/MonthCalendar'
 
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: 'vue-month-calendar',
-  router: router,
-  data: function () {
+  data () {
     return {
       options: {
-        mike: 'mike'
+        minYear: 2011,
+        maxYear: new Date().getFullYear()
       }
     }
   },
   components: {
-    'VueMonthCalendar': App
+    'VueMonthCalendar': VueMonthCalendar
   }
 })
