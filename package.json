@@ -11,7 +11,8 @@
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "nodemon test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "compile": "webpack --config ./webpack/webpack.config.js --hot"
   },
   "dependencies": {
     "vue": "^2.2.6",
@@ -82,7 +83,10 @@
     "webpack": "^2.3.3",
     "webpack-dev-middleware": "^1.10.0",
     "webpack-hot-middleware": "^2.18.0",
-    "webpack-merge": "^4.1.0"
+    "webpack-merge": "^4.1.0",
+    "babel-plugin-transform-vue-jsx": "^3.4.2",
+    "babel-helper-vue-jsx-merge-props": "^2.0.2",
+    "babel-plugin-syntax-jsx": "^6.18.0"
   },
   "engines": {
     "node": ">= 4.0.0",
