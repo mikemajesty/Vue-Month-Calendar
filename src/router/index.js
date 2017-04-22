@@ -7,7 +7,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'MonthCalendar',
+      name: 'VueMonthCalendar',
       component: MonthCalendar
     }
   ]
