@@ -6,10 +6,10 @@ Vue.config.productionTip = false
 /* eslint-disable no-new */
 new Vue({
   el: 'vue-month-calendar',
-  data () {
+  data: function () {
     return {
       options: {
-        minYear: 2011,
+        minYear: new Date().getFullYear() - 7,
         maxYear: new Date().getFullYear()
       }
     }

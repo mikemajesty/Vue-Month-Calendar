@@ -20,7 +20,7 @@
         </md-button>
       </md-layout>
       <md-layout md-flex="10">
-        <md-button class="md-raised">
+        <md-button class="md-raised" v-on:click.native="lessYear">
           <md-icon>keyboard_arrow_left</md-icon>
         </md-button>
       </md-layout>
@@ -33,7 +33,7 @@
         </md-input-container>
       </md-layout>
       <md-layout md-flex="10">
-        <md-button class="md-raised">
+        <md-button class="md-raised" v-on:click.native="plusYear">
           <md-icon>keyboard_arrow_right</md-icon>
         </md-button>
       </md-layout>
@@ -92,6 +92,12 @@
         })
         month[0].date.setMonth(month[0].date.getMonth() + 1)
         this.month = month[0].date.toLocaleString(navigator.language, { month: 'long' })
+      },
+      lessYear: function () {
+        this.year = this.year === this.options.minYear ? this.options.maxYear : this.year -= 1
+      },
+      plusYear: function () {
+        this.year = this.year === this.options.maxYear ? this.options.minYear : this.year += 1
       }
     },
     computed: {
@@ -108,6 +114,7 @@
     }
   }
 </script>
+
 
 <style scoped>
   h1,
