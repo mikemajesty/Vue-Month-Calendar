@@ -64,19 +64,16 @@
     for (var cont = 0; cont < 12; cont++) {
       months[cont] = capitalize(new Date(currentDate.getFullYear(), cont, 1).toLocaleString(navigator.language, { month: 'long' }))
     }
-    console.log('passou')
     return months
   }
-
-  console.log(getMonths())
 
   export default {
     name: 'MonthCalendar',
     data () {
       return {
         msg: 'Month Calendar',
-        year: [],
-        month: []
+        year: new Date().toLocaleString(navigator.language, { year: 'numeric' }),
+        month: new Date().toLocaleString(navigator.language, { month: 'long' })
       }
     },
     methods: {
