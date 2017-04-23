@@ -53,6 +53,12 @@
     return list.charAt(0).toUpperCase() + list.slice(1)
   }
 
+  const filterByMonth = (month, locale) => {
+    return getMonths(locale).filter((item) => {
+      return item.name === capitalize(month)
+    })
+  }
+
   const getMonths = (locale) => {
     let months = []
     let currentDate = new Date()
@@ -85,16 +91,14 @@
     },
     methods: {
       lessMonth: function () {
-        let month = getMonths(this.locale).filter((item) => {
-          return item.name === capitalize(this.month)
-        })
+        let month = filterByMonth(this.month, this.locale)
+
         month[0].date.setMonth(month[0].date.getMonth() - 1)
         this.month = capitalize(month[0].date.toLocaleString(this.locale, { month: 'long' }))
       },
       plusMonth: function () {
-        let month = getMonths(this.locale).filter((item) => {
-          return item.name === capitalize(this.month)
-        })
+        let month = filterByMonth(this.month, this.locale)
+
         month[0].date.setMonth(month[0].date.getMonth() + 1)
         this.month = capitalize(month[0].date.toLocaleString(this.locale, { month: 'long' }))
       },
@@ -121,7 +125,7 @@
 </script>
 
 
-<style scoped>
+<style lang="css">
   h1,
   h2 {
     font-weight: normal;
@@ -147,5 +151,11 @@
 
   .vue-month-calendar .custom-height {
     height: 45px;
+  }
+  
+  .md-menu-content.md-select-content {
+    overflow-y: auto;
+    top: 65px !important;
+    margin-left: 0px !important;
   }
 </style>

@@ -11,7 +11,8 @@ new Vue({
       options: {
         locale: 'pt-BR',
         minYear: new Date().getFullYear() - 7,
-        maxYear: new Date().getFullYear()
+        maxYear: new Date().getFullYear(),
+        selectMonth: []
       }
     }
   },
