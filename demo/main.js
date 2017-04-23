@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import VueMonthCalendar from '@/MonthCalendar'
+import VueMonthCalendar from 'component/MonthCalendar'
 
 Vue.config.productionTip = false
 

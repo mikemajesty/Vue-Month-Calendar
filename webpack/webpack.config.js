@@ -11,7 +11,7 @@ module.exports = {
   },
   resolve: {
 		alias:{
-      component: path.resolve( __dirname, '../demo/components'),
+      component: path.resolve( __dirname, '../component'),
 			vue: 'vue/dist/vue.js'
     },
     extensions: ['.ts', '.tsx', '.js', '.vue'],

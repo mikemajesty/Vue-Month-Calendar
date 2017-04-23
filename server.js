@@ -6,7 +6,7 @@ app.use('/', express.static(__dirname + '/'));
 var PORT = process.env.PORT || 5000;
 
 app.get('/', function(req, res) {
-  res.sendfile('index.html');
+  res.sendfile('demo/index.html');
 });
 
 app.listen(PORT, function() {
