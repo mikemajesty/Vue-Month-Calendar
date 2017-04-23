@@ -4,15 +4,17 @@ import VueMonthCalendar from '@/components/MonthCalendar'
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
+var currentDate = new Date()
+
 new Vue({
   el: 'vue-month-calendar',
   data: function () {
     return {
       options: {
-        locale: 'pt-BR',
-        minYear: new Date().getFullYear() - 7,
-        maxYear: new Date().getFullYear(),
-        selectMonth: []
+        minYear: currentDate.getFullYear() - 7,
+        maxYear: currentDate.getFullYear(),
+        initialDate: {},
+        finalDate: {}
       }
     }
   },

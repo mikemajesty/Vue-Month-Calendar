@@ -8,7 +8,7 @@
       </md-layout>
       <md-layout md-flex="30">
         <md-input-container>
-          <label for="month">Month</label>
+          <label for="month">Month - {{this.options.initialDate}} - {{this.options.finalDate}}</label>
           <md-select name="month" v-model="month" class="center-align">
             <md-option v-for="month in loadMonth" :value="month.name" :key="month.name">{{ month.name }}</md-option>
           </md-select>
@@ -28,7 +28,7 @@
         <md-input-container>
           <label for="year">Year</label>
           <md-select name="year" v-model="year" class="center-align">
-            <md-option v-for="year in loadYear" :value="year" :key="year">{{ year }}</md-option>
+            <md-option v-for="year in loadYear" :value="year.name" :key="year.name">{{ year.name }}</md-option>
           </md-select>
         </md-input-container>
       </md-layout>
@@ -61,13 +61,21 @@
 
   const getMonths = (locale) => {
     let months = []
-    let currentDate = new Date()
 
     for (var cont = 0; cont < 12; cont++) {
       const date = new Date(currentDate.getFullYear(), cont, 1)
       months[cont] = {name: capitalize(date.toLocaleString(locale, { month: 'long' })), date: date}
     }
     return months
+  }
+
+  const setParameters = (month, year, locale) => {
+    const initialDate = filterByMonth(month, locale)[0].date
+    initialDate.setFullYear(year)
+    return {
+      initial: initialDate,
+      final: new Date(year, initialDate.getMonth() + 1, 0)
+    }
   }
 
   export default {
@@ -91,16 +99,16 @@
     },
     methods: {
       lessMonth: function () {
-        let month = filterByMonth(this.month, this.locale)
+        let month = filterByMonth(this.month, this.locale)[0].date
 
-        month[0].date.setMonth(month[0].date.getMonth() - 1)
-        this.month = capitalize(month[0].date.toLocaleString(this.locale, { month: 'long' }))
+        month.setMonth(month.getMonth() - 1)
+        this.month = capitalize(month.toLocaleString(this.locale, { month: 'long' }))
       },
       plusMonth: function () {
-        let month = filterByMonth(this.month, this.locale)
+        let month = filterByMonth(this.month, this.locale)[0].date
 
-        month[0].date.setMonth(month[0].date.getMonth() + 1)
-        this.month = capitalize(month[0].date.toLocaleString(this.locale, { month: 'long' }))
+        month.setMonth(month.getMonth() + 1)
+        this.month = capitalize(month.toLocaleString(this.locale, { month: 'long' }))
       },
       lessYear: function () {
         this.year = this.year === this.options.minYear ? this.options.maxYear : this.year -= 1
@@ -116,10 +124,26 @@
       loadYear: function () {
         let years = []
         for (var cont = this.options.minYear; cont <= this.options.maxYear; cont++) {
-          years.push(cont)
+          years.push({name: cont})
         }
         return years
       }
+    },
+    watch: {
+      month: function () {
+        const date = setParameters(this.month, this.year, this.locale)
+        this.options.initialDate = date.initial
+        this.options.finalDate = date.final
+      },
+      year: function (year) {
+        const date = setParameters(this.month, this.year, this.locale)
+        this.options.initialDate = date.initial
+        this.options.finalDate = date.final
+      }
+    },
+    created: function () {
+      this.options.initialDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1)
+      this.options.finalDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0)
     }
   }
 </script>
@@ -154,7 +178,6 @@
   }
   
   .md-menu-content.md-select-content {
-    overflow-y: auto;
     top: 65px !important;
     margin-left: 0px !important;
   }
