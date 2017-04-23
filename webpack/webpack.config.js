@@ -1,7 +1,7 @@
 var path = require('path');
 module.exports = {
 
-  entry: path.resolve(__dirname, '../src/main.js'),
+  entry: path.resolve(__dirname, '../demo/main.js'),
 
   output: {
     path: __dirname + '/../build',
@@ -11,7 +11,7 @@ module.exports = {
   },
   resolve: {
 		alias:{
-      component: path.resolve( __dirname, '../src/components'),
+      component: path.resolve( __dirname, '../demo/components'),
 			vue: 'vue/dist/vue.js'
     },
     extensions: ['.ts', '.tsx', '.js', '.vue'],
