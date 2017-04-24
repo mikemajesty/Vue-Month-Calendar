@@ -13,7 +13,7 @@
 ```JavaScript
 import VueMonthCalendar from 'vue-month-calendar'
 
-var currentDate = new Date()
+const currentDate = new Date()
 
 new Vue({
   el: '#month-calendar',
