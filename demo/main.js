@@ -7,7 +7,8 @@ Vue.config.productionTip = false
 var currentDate = new Date()
 
 new Vue({
-  el: 'vue-month-calendar',
+  el: '#month-calendar',
+  name: 'vue-month-calendar',
   data: function () {
     return {
       options: {

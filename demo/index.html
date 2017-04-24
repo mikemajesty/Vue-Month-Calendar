@@ -7,7 +7,11 @@
       <link href="https://unpkg.com/vue-material@0.7.1/dist/vue-material.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <vue-month-calendar locale='en-US' :options="options"></vue-month-calendar>
+    <div id='month-calendar'>
+      <vue-month-calendar locale='en-US' :options="options"></vue-month-calendar>
+      <br> Initial Date : <b> {{options.initialDate}}</b>
+      <br> Final Date : <b>{{options.finalDate}}</b>
+    </div>
   </body>
-  <script src="../build/build-heroku.js"></script>
+  <!--<script src="../build/build-heroku.js"></script>-->
 </html>
