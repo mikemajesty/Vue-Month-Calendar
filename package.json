@@ -1,9 +1,9 @@
 {
   "name": "vue-month-calendar",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "A Vue.js project",
   "author": "mikemajesty <mikemajesty2011@gmail.com>",
-  "private": true,
+  "main": "component/MonthCalendar.vue",
   "scripts": {
     "dev": "nodemon build/dev-server.js",
     "start": "nodemon build/dev-server.js",
