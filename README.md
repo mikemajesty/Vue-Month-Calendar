@@ -41,13 +41,16 @@ new Vue({
 ```
 ##### Dual list options
 
-* **options.locale:**(optional): Your application locale;
+* **options.locale:**(optional): Application locale;
 * **options.minYear:**(required): Min year that will be shown in the select options.;
 * **options.maxYear:**(required): Min year that will be shown in the select options.;
 * **options.initialDate:**(required): First day of month that you selected.;
-* **options.initialDate:**(required): Last day of month that you selected.;
+* **options.finalDate:**(required): Last day of month that you selected.;
 
 #### change dual list
+```
+npm install -g nodemon
+```
 To execute your changes run the command ```npm run dev```
 
 #### Used versions
