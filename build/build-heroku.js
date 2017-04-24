@@ -59,7 +59,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "4e2e82f968b2c1e5b69d"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "4c4c20a2f9da86488f07"; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
 /******/ 	var hotCurrentParents = []; // eslint-disable-line no-unused-vars
@@ -10399,7 +10399,8 @@ _vue2.default.config.productionTip = false;
 var currentDate = new Date();
 
 new _vue2.default({
-  el: 'vue-month-calendar',
+  el: '#month-calendar',
+  name: 'vue-month-calendar',
   data: function data() {
     return {
       options: {
