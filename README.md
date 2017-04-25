@@ -47,7 +47,7 @@ new Vue({
 * **options.initialDate:**(required): First day of month that you selected.;
 * **options.finalDate:**(required): Last day of month that you selected.;
 
-#### change dual list
+#### change month calendar
 ```
 npm install -g nodemon
 ```
