@@ -1,5 +1,5 @@
 # Vue Month Calendar - You can now choose dates without a calendar.
-[![month-calendar.gif](https://s8.postimg.org/qx5m0lib9/month-calendar.gif)](https://postimg.org/image/y0dhg7nqp/)
+[![monthPNG.png](https://i.postimg.cc/65NkJYjY/monthPNG.png)](https://postimg.cc/t72SFtHx)
 
 ## Try it yourself.
 [click here](https://month-calendar.herokuapp.com)
